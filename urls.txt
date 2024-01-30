@@ -1,0 +1,2 @@
+RENDER: https://docs.render.com/deploy-django
+TAILWIND: https://django-tailwind.readthedocs.io/en/latest/installation.html
