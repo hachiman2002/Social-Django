@@ -1,2 +1,4 @@
 RENDER: https://docs.render.com/deploy-django
 TAILWIND: https://django-tailwind.readthedocs.io/en/latest/installation.html
+GUI TAILWIND: https://github.com/trananhtuat/tailwindcss-facebook/blob/main/index.html
+ALPINE.JS: https://alpinejs.dev/
