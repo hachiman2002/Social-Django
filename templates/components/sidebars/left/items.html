@@ -2,28 +2,25 @@
 
 <ul class="p-4">
     <li>
-        <a href="{% url 'users:profile'  user.username %}"
-            class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
-            <img src="{{user.profile.picture.url}}" alt="Profile picture" class="w-10 h-10 rounded-full"
-            <span class="font-semibold">{{user.username}}t</span>
+        <a href="{% url 'users:profile' user.username %}" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+            <img src="{{user.profile.picture.url}}" alt="Profile picture" class="w-10 h-10 rounded-full">
+            <span class="font-semibold">{{user.username}}</span>
         </a>
     </li>
     <li>
-        <a href="#"
-            class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
-            <i class='bx bx-group text-gray-600'></i>
+        <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third dark:focus:bg-dark-second">
+            <i class='bx bx-group text-gray-500'></i>
             <span class="font-semibold">Friends</span>
         </a>
     </li>
-   
-    <!-- <li>
-        <a href="#"
-            class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
+    
+    {% comment %} <li>
+        <a href="#" class="flex items-center space-x-2 p-2 hover:bg-gray-200 rounded-lg transition-all dark:text-dark-txt dark:hover:bg-dark-third">
             <span class="w-10 h-10 rounded-full grid place-items-center bg-gray-300 dark:bg-dark-second">
                 <i class='bx bx-chevron-down'></i>
             </span>
             <span class="font-semibold">See more</span>
         </a>
-    </li> -->
+    </li> {% endcomment %}
     <li class="border-b border-gray-200 dark:border-dark-third mt-6"></li>
 </ul>

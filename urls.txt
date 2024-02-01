@@ -5,3 +5,6 @@ ALPINE.JS: https://alpinejs.dev/
 BOX ICONS : https://boxicons.com/
 HERO ICONS: https://heroicons.com/
 Tailwind UI: https://tailwindui.com/
+Allout: https://docs.allauth.org/en/latest/installation/quickstart.html
+Allout github templates: https://github.com/pennersr/django-allauth
+crispy django: https://django-crispy-forms.readthedocs.io/en/latest/
