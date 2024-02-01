@@ -21,9 +21,12 @@ from django.conf.urls.static import static
 from .views import HomeView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name="home"),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
+    
+    path('users/', include('accounts.urls', namespace="users")),
+    path('', HomeView.as_view(), name="home"),
+    
 ]
 
 if settings.DEBUG:

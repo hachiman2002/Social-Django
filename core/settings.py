@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'crispy_tailwind',
     
     'core',
+    'accounts',
     
     'social',
 ]
@@ -92,7 +93,7 @@ ACCOUNT_ALLOW_REGISTRATION = env.bool("DJANGO_ACCOUNT_ALLOW_REGISTRATION", True)
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_UNIQUE = True
-#AUTH_USER_MODEL="accounts.User"
+AUTH_USER_MODEL="accounts.User"#accounts hace referencia a la app
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 3
