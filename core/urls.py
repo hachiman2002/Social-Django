@@ -24,8 +24,11 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
     
-    path('users/', include('accounts.urls', namespace="users")),
     path('', HomeView.as_view(), name="home"),
+    path('users/', include('accounts.urls', namespace="users")),
+    path('social/', include('social.urls', namespace='social')),
+
+    
     
 ]
 
