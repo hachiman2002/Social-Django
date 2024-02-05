@@ -15,6 +15,7 @@ django-crispy-forms
 crispy-tailwind
 django-ckeditor
 django-tailwind
+django-multiupload
 markdown
 gunicorn
 whitenoise
