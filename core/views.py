@@ -8,9 +8,9 @@ from social.forms import SocialPostForm
 
 class HomeView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        ogged_in_user=request.user
+        logged_in_user=request.user
 
-        posts = SocialPost.objects.all()
+        posts = SocialPost.objects.filter(author__profile__followers__in=[logged_in_user.id]).order_by('-created_on')
 
         form = SocialPostForm()
         
@@ -24,7 +24,10 @@ class HomeView(LoginRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         logged_in_user=request.user
 
-        posts = SocialPost.objects.all()
+        posts = SocialPost.objects.filter(
+                author__profile__followers__in=[logged_in_user.id]
+            ).order_by('-created_on')
+
 
         form = SocialPostForm(request.POST, request.FILES)
         files = request.FILES.getlist('image')
