@@ -6,9 +6,10 @@ from django.shortcuts import render, redirect
 from django.urls.base import reverse_lazy
 from django.views.generic.base import View
 from .models import SocialPost, SocialComment
-from .forms import SocialCommentForm
+from .forms import SocialCommentForm, ShareForm
 from django.views.generic.edit import UpdateView, DeleteView
 from django.http import HttpResponseRedirect, HttpResponse
+from django.utils import timezone
 
 
 
@@ -44,6 +45,29 @@ class PostDetailView(LoginRequiredMixin, View):
         return render(request, 'pages/social/detail.html', context)
 
 
+class SharedPostView(View):
+    def post(self, request, pk, *args, **kwargs):
+        original_post = SocialPost.objects.get(pk=pk)
+        form = ShareForm(request.POST)
+
+        if form.is_valid():
+            new_post = SocialPost(
+                shared_body=self.request.POST.get('body'),
+                body=original_post.body,
+                author=original_post.author,
+                created_on=original_post.created_on,
+                shared_user=request.user,
+                shared_on=timezone.now(),
+            )
+            new_post.save()
+
+            for img in original_post.image.all():
+                new_post.image.add(img)
+
+            new_post.save()
+
+        return redirect('home')
+
 
 class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model=SocialPost
@@ -57,7 +81,6 @@ class PostEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         post = self.get_object()
         return self.request.user == post.author
-
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -216,7 +239,7 @@ class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         post = self.get_object()
         return self.request.user == post.author
 
-#ditar para que el dueno del comentario pueda editarlo
+#editar para que el dueno del comentario pueda editarlo
 class CommentEditView(UpdateView):
     model = SocialComment
     fields = ['comment']

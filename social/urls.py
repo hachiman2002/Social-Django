@@ -1,5 +1,15 @@
 from django.urls import path
-from .views import PostDeleteView, PostDetailView, PostEditView, AddLike, AddDislike, CommentDeleteView, CommentEditView, CommentReplyView, AddCommentDislike, AddCommentLike
+from .views import (PostDeleteView, 
+                    PostDetailView, 
+                    PostEditView, 
+                    AddLike, 
+                    AddDislike, 
+                    CommentDeleteView, 
+                    CommentEditView, 
+                    CommentReplyView, 
+                    AddCommentDislike, 
+                    AddCommentLike, 
+                    SharedPostView)
 
 
 app_name="social"
@@ -11,6 +21,8 @@ urlpatterns = [
     
     path('post/delete/<int:pk>/like', AddLike.as_view(), name="like"),
     path('post/delete/<int:pk>/dislike', AddDislike.as_view(), name="dislike"),
+    
+    path('post/<int:pk>/share', SharedPostView.as_view(), name='share-post'),
     
     path('post/<int:post_pk>/comment/delete/<int:pk>/', CommentDeleteView.as_view(), name="comment-delete"),
     path('post/<int:post_pk>/comment/edit/<int:pk>/', CommentEditView.as_view(), name="comment-edit"),
